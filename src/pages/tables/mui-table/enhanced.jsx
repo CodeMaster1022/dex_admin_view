@@ -83,7 +83,7 @@ const headCells = [
     id: 'Total_PNL',
     numeric: true,
     disablePadding: false,
-    label: 'Total RD'
+    label: 'Total PNL'
   },
   {
     id: 'Total_Profit',
