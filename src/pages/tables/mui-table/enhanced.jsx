@@ -83,7 +83,7 @@ const headCells = [
     id: 'Total_PNL',
     numeric: true,
     disablePadding: false,
-    label: 'Total RD'
+    label: 'Total PNL'
   },
   {
     id: 'Total_Profit',
@@ -307,7 +307,7 @@ export default function EnhancedTable() {
                     </TableCell>
                     <TableCell sx={{ pr: 3}} align="right">
                       <Box sx={{minWidth:'150px'}}> 
-                        {row.Token_Traded}&nbsp;&nbsp;<Button onClick={() => copyToClipboard(row)}><Typography sx={{backgroundColor:'yellow',borderRadius:'10px',p:'1px'}}>Copy trade</Typography></Button>
+                        {row.Token_Traded}&nbsp;&nbsp;<Button onClick={() => copyToClipboard(row)}><Typography sx={{backgroundColor:'yellow',borderRadius:'10px',px:'2px',fontSize:'12px'}}>Copy</Typography></Button>
                       </Box>
                     </TableCell>
                   </TableRow>
