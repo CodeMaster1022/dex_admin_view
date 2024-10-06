@@ -54,10 +54,16 @@ export const JWTProvider = ({ children }) => {
     const init = async () => {
       try {
         const serviceToken = window.localStorage.getItem('serviceToken');
-        if (serviceToken && verifyToken(serviceToken)) {
-          setSession(serviceToken);
-          const response = await axios.get('/api/account/me');
-          const { user } = response.data;
+        // if (serviceToken && verifyToken(serviceToken)) {
+          // setSession(serviceToken);
+          // const response = await axios.get('/api/account/me');
+          const { user } = {
+            email:"info@codedthemes.com",
+            id:"5e86809283e28b96d2d38537",
+            name:"JWT User"
+          }
+          
+          console.log(user,"user-=====>")
           dispatch({
             type: LOGIN,
             payload: {
@@ -65,11 +71,12 @@ export const JWTProvider = ({ children }) => {
               user
             }
           });
-        } else {
-          dispatch({
-            type: LOGOUT
-          });
-        }
+        // } 
+        // else {
+        //   dispatch({
+        //     type: LOGOUT
+        //   });
+        // }
       } catch (err) {
         console.error(err);
         dispatch({

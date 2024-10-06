@@ -9,29 +9,31 @@ import Locales from 'components/Locales';
 import ScrollTop from 'components/ScrollTop';
 import Snackbar from 'components/@extended/Snackbar';
 import Notistack from 'components/third-party/Notistack';
-
+import ToastProvider from 'contexts/ToastContext';
 // auth-provider
 import { JWTProvider as AuthProvider } from 'contexts/JWTContext';
 
 // ==============================|| APP - THEME, ROUTER, LOCAL ||============================== //
 
 const App = () => (
-  <ThemeCustomization>
-    {/* <RTLLayout> */}
-    <Locales>
-      <ScrollTop>
-        <AuthProvider>
-          <>
-            <Notistack>
-              <RouterProvider router={router} />
-              <Snackbar />
-            </Notistack>
-          </>
-        </AuthProvider>
-      </ScrollTop>
-    </Locales>
-    {/* </RTLLayout> */}
-  </ThemeCustomization>
+<ToastProvider>
+    <ThemeCustomization>
+      {/* <RTLLayout> */}
+      <Locales>
+        <ScrollTop>
+          <AuthProvider>
+            <>
+              <Notistack>
+                <RouterProvider router={router} />
+                <Snackbar />
+              </Notistack>
+            </>
+          </AuthProvider>
+        </ScrollTop>
+      </Locales>
+      {/* </RTLLayout> */}
+    </ThemeCustomization>
+  </ToastProvider>
 );
 
 export default App;

@@ -15,7 +15,7 @@ import TableSortLabel from '@mui/material/TableSortLabel';
 import TableRow from '@mui/material/TableRow';
 import { visuallyHidden } from '@mui/utils';
 import axios from 'axios';
-
+import { toast } from 'react-toastify';
 // project imports
 import MainCard from 'components/MainCard';
 import Typography from '@mui/material/Typography';
@@ -69,7 +69,7 @@ function stableSort(array, comparator) {
 const headCells = [
   {
     id: 'total',
-    numeric: false,
+    numeric: true,
     disablePadding: false,
     label: '#'
   },
@@ -189,6 +189,7 @@ export default function EnhancedTable() {
   const copyToClipboard = (text) => {  
     navigator.clipboard.writeText(text)  
         .then(() => {  
+          toast.success('Copied successfully!', { autoClose: 2000 });
             console.log('Address copied to clipboard:', text);  
             // Optionally, you can show a notification here  
         })  
@@ -205,23 +206,23 @@ export default function EnhancedTable() {
     setSelected([]);
   };
 
-  const handleClick = (event, name) => {
-    const selectedIndex = selected.indexOf(name);
-    let newSelected = [];
+  // const handleClick = (event, name) => {
+  //   const selectedIndex = selected.indexOf(name);
+  //   let newSelected = [];
 
-    if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, name);
-    } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1));
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1));
-    } else if (selectedIndex > 0) {
-      newSelected = newSelected.concat(selected.slice(0, selectedIndex), selected.slice(selectedIndex + 1));
-    }
-    const selectedRowData = dexItem.filter((row) => newSelected.includes(row.name.toString()));
-    setSelectedValue(selectedRowData);
-    setSelected(newSelected);
-  };
+  //   if (selectedIndex === -1) {
+  //     newSelected = newSelected.concat(selected, name);
+  //   } else if (selectedIndex === 0) {
+  //     newSelected = newSelected.concat(selected.slice(1));
+  //   } else if (selectedIndex === selected.length - 1) {
+  //     newSelected = newSelected.concat(selected.slice(0, -1));
+  //   } else if (selectedIndex > 0) {
+  //     newSelected = newSelected.concat(selected.slice(0, selectedIndex), selected.slice(selectedIndex + 1));
+  //   }
+  //   const selectedRowData = dexItem.filter((row) => newSelected.includes(row.name.toString()));
+  //   setSelectedValue(selectedRowData);
+  //   setSelected(newSelected);
+  // };
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -267,7 +268,7 @@ export default function EnhancedTable() {
                 return (
                   <TableRow
                     hover
-                    onClick={(event) => handleClick(event, row.name)}
+                    // onClick={(event) => handleClick(event, row.name)}
                     role="checkbox"
                     aria-checked={isItemSelected}
                     tabIndex={-1}
@@ -289,21 +290,21 @@ export default function EnhancedTable() {
                     </TableCell>
                     <TableCell align="left">
                         <Typography sx={{backgroundColor:'#094B0C', px:'8px', fontSize:'12px', color:'#5F9A64', display:'inline-block'}}>
-                          {row.Total_PNL}
+                        {row.Total_PNL ? row.Total_PNL.toFixed(2) : '0.00'}x
                         </Typography>
                     </TableCell>
-                    <TableCell align="left" ><Typography color='#D9A23B' fontSize={12}>{row.Total_Profit}</Typography></TableCell>
+                    <TableCell align="left" ><Typography color='#D9A23B' fontSize={12}>{row.Total_Profit ? row.Total_Profit.toFixed(2) : '0.00'}</Typography></TableCell>
                     <TableCell align="center">
                       <Typography fontSize={12}>
-                        {row.Win_Rate}%
+                      {row.Win_Rate ? row.Win_Rate.toFixed(2) : '0.00'}%
                       </Typography>
                       <Box sx={{display:'flex',justifyContent:'center',gap:'5px'}}>
-                          <Typography fontSize={9}>Win{row.Token_win_traded}</Typography>
-                          <Typography fontSize={9}>Lose{row.Token_Traded-row.Token_win_traded}</Typography>
+                          <Typography fontSize={9}>Win&nbsp;:&nbsp;{row.Token_win_traded}</Typography>
+                          <Typography fontSize={9}>Lose&nbsp;:&nbsp;{row.Token_Traded-row.Token_win_traded}</Typography>
                       </Box>
                     </TableCell>
                     <TableCell sx={{ pr: 3 }} align="center">
-                      {row.Avg_Buy_Price}
+                      {row.Avg_Buy_Price ? row.Avg_Buy_Price.toFixed(2) : '0.00'}
                     </TableCell>
                     <TableCell sx={{ pr: 3}} align="right">
                       <Box sx={{minWidth:'150px'}}> 
