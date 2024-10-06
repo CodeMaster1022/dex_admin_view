@@ -57,7 +57,7 @@ export const JWTProvider = ({ children }) => {
         // if (serviceToken && verifyToken(serviceToken)) {
           // setSession(serviceToken);
           // const response = await axios.get('/api/account/me');
-          const { user } = {
+          const user = {
             email:"info@codedthemes.com",
             id:"5e86809283e28b96d2d38537",
             name:"JWT User"

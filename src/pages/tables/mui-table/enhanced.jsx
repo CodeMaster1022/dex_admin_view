@@ -172,7 +172,6 @@ export default function EnhancedTable() {
     const fetchDexItem = async () => {
       try {
         const response = await axios.get('https://dex-backend.vercel.app/');  // Fetch the data
-        console.log(response.data);
         setDexItem(response.data);  // Update state with the fetched data
       } catch (err) {
         setError(err);  // Set error state if the request fails
