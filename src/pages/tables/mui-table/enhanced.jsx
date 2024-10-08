@@ -13,7 +13,7 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableSortLabel from '@mui/material/TableSortLabel';
 import TableRow from '@mui/material/TableRow';
-import Tooltip from '@mui/material/Tooltip ';
+import { Tooltip } from '@mui/material';
 import { visuallyHidden } from '@mui/utils';
 import MainCard from 'components/MainCard';
 import Typography from '@mui/material/Typography';
