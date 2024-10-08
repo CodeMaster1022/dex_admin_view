@@ -354,7 +354,7 @@ export default function EnhancedTable() {
                   <Typography fontSize={12}>{row.Avg_Buy_Price ? row.Avg_Buy_Price.toFixed(2) : '0.00'}</Typography>
                   </TableCell>
                   <TableCell sx={{ pr: 3}} align="center">
-                  <Typography fontSize={12}>{row.Token_Traded}&nbsp;&nbsp;</Typography>;
+                  <Typography fontSize={12}>{row.Token_Traded}&nbsp;&nbsp;</Typography>
                       {/* <Button onClick={() => copyToClipboard(row.Address)}><Typography sx={{backgroundColor:'#141414',borderRadius:'10px',px:'2px',fontSize:'12px'}}>&nbsp;Copy&nbsp;</Typography></Button> */}
                   </TableCell>
                 </TableRow>
