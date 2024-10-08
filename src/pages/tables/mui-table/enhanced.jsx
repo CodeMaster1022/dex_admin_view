@@ -13,12 +13,14 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableSortLabel from '@mui/material/TableSortLabel';
 import TableRow from '@mui/material/TableRow';
+import Tooltip from '@mui/material/Tooltip ';
 import { visuallyHidden } from '@mui/utils';
+import MainCard from 'components/MainCard';
+import Typography from '@mui/material/Typography';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 // project imports
-import MainCard from 'components/MainCard';
-import Typography from '@mui/material/Typography';
+import { CopyOutlined } from '@ant-design/icons';
 // import { CSVExport, RowSelection } from 'components/third-party/react-table';
 import "../../../CSS/loading.css"
 // table data
@@ -277,8 +279,26 @@ export default function EnhancedTable() {
                   selected={isItemSelected}
                 >
                   <TableCell align="left">{index+1}</TableCell>
-                  <TableCell component="th" id={labelId} scope="row" padding="none" style={{ width: '40%' }}>
-                      <Typography fontSize={12}>😎Profit Top 200 Dynamic:&nbsp;{row.Address}</Typography>
+                  <TableCell component="th" id={labelId} scope="row" padding="none" style={{ width: '40%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <Typography fontSize={12} sx={{ flexGrow: 1 }}>😎Profit Top 200 Dynamic:&nbsp;{row.Address}</Typography>
+                    <Tooltip title="Copy Address" arrow>
+                    <Button
+                      variant="outlined"
+                      size="small"
+                      onClick={() => copyToClipboard(row.Address)} // Replace with your copy function
+                      sx={{
+                        ml: 1,
+                        borderColor: '#6D9EEB',
+                        color: '#6D9EEB',
+                        '&:hover': {
+                          backgroundColor: '#6D9EEB',
+                          color: '#FFFFFF',
+                        },
+                      }}
+                    >
+                      <CopyOutlined fontSize="small" />
+                    </Button>                      
+                    </Tooltip>
                   </TableCell>
                   <TableCell align="left">
                       <Typography sx={{backgroundColor:'#094B0C', px:'8px', fontSize:'12px', color:'#5F9A64', display:'inline-block'}}>
@@ -299,9 +319,9 @@ export default function EnhancedTable() {
                     {row.Avg_Buy_Price ? row.Avg_Buy_Price.toFixed(2) : '0.00'}
                   </TableCell>
                   <TableCell sx={{ pr: 3}} align="right">
-                    <Box sx={{minWidth:'150px'}}> 
+                    {/* <Box sx={{minWidth:'150px'}}> 
                       {row.Token_Traded}&nbsp;&nbsp;<Button onClick={() => copyToClipboard(row)}><Typography sx={{backgroundColor:'#141414',borderRadius:'10px',px:'2px',fontSize:'12px'}}>&nbsp;Copy&nbsp;</Typography></Button>
-                    </Box>
+                    </Box> */}
                   </TableCell>
                 </TableRow>
               );
