@@ -278,7 +278,7 @@ export default function EnhancedTable() {
                 >
                   <TableCell align="left">{index+1}</TableCell>
                   <TableCell component="th" id={labelId} scope="row" padding="none" style={{ width: '40%' }}>
-                      <Typography fontSize={12}>Profit Top 200 Dynamic:&nbsp;{row.Address}</Typography>
+                      <Typography fontSize={12}>😎Profit Top 200 Dynamic:&nbsp;{row.Address}</Typography>
                   </TableCell>
                   <TableCell align="left">
                       <Typography sx={{backgroundColor:'#094B0C', px:'8px', fontSize:'12px', color:'#5F9A64', display:'inline-block'}}>
