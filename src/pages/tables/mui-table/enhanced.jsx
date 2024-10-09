@@ -95,7 +95,7 @@ const headCells = [
     id: 'Total_PNL',
     numeric: true,
     disablePadding: false,
-    label: 'Total PNL'
+    label: 'Total ROI'
   },
   {
     id: 'Total_Profit',
@@ -109,12 +109,12 @@ const headCells = [
     disablePadding: false,
     label: 'Win Rate'
   },
-  {
-    id: 'Avg_Buy_Price',
-    numeric: true,
-    disablePadding: false,
-    label: 'Avg buy rate'
-  },
+  // {
+  //   id: 'Avg_Buy_Price',
+  //   numeric: true,
+  //   disablePadding: false,
+  //   label: 'Avg buy rate'
+  // },
   {
     id: 'Token_Traded',
     numeric: true,
@@ -281,7 +281,7 @@ export default function EnhancedTable() {
                   <TableCell align="left" width={"50px"} sx={{padding:'0px'}}>{index+1}</TableCell>
                   <TableCell align="left" component="th" id={labelId} scope="row" padding="none" style={{ width: '40%' }}>
                       <Box sx={{display:'flex', justifyContent:'left',alignItems:'center'}}>
-                        <Typography fontSize={12}>😎Profit Top 200 Dynamic:&nbsp;{row.Address}&nbsp;&nbsp;</Typography>
+                        <Typography fontSize={12}>{row.Address}</Typography>
                         {/* <CopyOutlined onClick={() => copyToClipboard(row.Address)}/> */}
                         <button className="btn-copy" onClick={() => copyToClipboard(row.Address)}>
                           <span
@@ -350,9 +350,9 @@ export default function EnhancedTable() {
                         <Typography fontSize={9}>Lose&nbsp;:&nbsp;{row.Token_Traded-row.Token_win_traded}</Typography>
                     </Box>
                   </TableCell>
-                  <TableCell sx={{ pr: 3 }} align="center">
-                  <Typography fontSize={12}>{row.Avg_Buy_Price ? row.Avg_Buy_Price.toFixed(2) : '0.00'}</Typography>
-                  </TableCell>
+                  {/* <TableCell sx={{ pr: 3 }} align="center"> */}
+                  {/* <Typography fontSize={12}>{row.Avg_Buy_Price ? row.Avg_Buy_Price.toFixed(2) : '0.00'}</Typography> */}
+                  {/* </TableCell> */}
                   <TableCell sx={{ pr: 3}} align="center">
                   <Typography fontSize={12}>{row.Token_Traded}&nbsp;&nbsp;</Typography>
                       {/* <Button onClick={() => copyToClipboard(row.Address)}><Typography sx={{backgroundColor:'#141414',borderRadius:'10px',px:'2px',fontSize:'12px'}}>&nbsp;Copy&nbsp;</Typography></Button> */}
