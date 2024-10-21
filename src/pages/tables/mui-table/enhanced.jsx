@@ -278,7 +278,7 @@ export default function EnhancedTable() {
                   key={row.id}
                   selected={isItemSelected}
                 >
-                  <TableCell align="left" width={"50px"} sx={{padding:'0px'}}>{index+1}</TableCell>
+                  <TableCell align="left" width={"50px"} sx={{padding:'0px'}}>{(page)*rowsPerPage+index+1}</TableCell>
                   <TableCell align="left" component="th" id={labelId} scope="row" padding="none" style={{ width: '40%' }}>
                       <Box sx={{display:'flex', justifyContent:'left',alignItems:'center'}}>
                         <Typography fontSize={12}>{row.Address}</Typography>
