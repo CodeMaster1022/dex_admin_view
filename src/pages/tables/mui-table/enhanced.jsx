@@ -137,7 +137,7 @@ function EnhancedTableHead({ onSelectAllClick, order, orderBy, numSelected, rowC
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
-            align={headCell.numeric ? 'left' : 'left'}
+            align={headCell.numeric ? 'center' : 'left'}
             // padding={headCell.disablePadding ? 'none' : 'none'}
             sortDirection={orderBy === headCell.id ? order : undefined}
           >
@@ -336,9 +336,9 @@ export default function EnhancedTable() {
                       </Box>
                   </TableCell>
                   <TableCell align="left">
-                      <Typography sx={{backgroundColor:'#094B0C', px:'8px', fontSize:'12px', color:'#5F9A64', display:'inline-block'}}>
+                      {/* <Typography sx={{backgroundColor:'#094B0C', px:'8px', fontSize:'12px', color:'#5F9A64', display:'inline-block'}}>
                       {row.Total_PNL ? row.Total_PNL.toFixed(2) : '0.00'}x
-                      </Typography>
+                      </Typography> */}
                   </TableCell>
                   <TableCell align="left" ><Typography color='#D9A23B' fontSize={12}>{row.Total_Profit ? row.Total_Profit.toFixed(2) : '0.00'}</Typography></TableCell>
                   <TableCell align="center">
